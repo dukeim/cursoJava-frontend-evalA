@@ -16,6 +16,9 @@ import { Not403Component } from './pages/not403/not403.component';
 import { Not404Component } from './pages/not404/not404.component';
 import { PacienteEdicionComponent } from './pages/paciente/paciente-edicion/paciente-edicion.component';
 import { PacienteComponent } from './pages/paciente/paciente.component';
+import { SignovitalComponent } from './pages/signovital/signovital.component';
+import { SignovitalEdicionComponent } from './pages/signovital/signovital-edicion/signovital-edicion.component';
+import { PerfilComponent } from './pages/perfil/perfil.component';
 import { ReporteComponent } from './pages/reporte/reporte.component';
 import { GuardService } from './_service/guard.service';
 
@@ -43,6 +46,12 @@ const routes: Routes = [
       { path: ':token', component: TokenComponent }
     ]
   },
+  { path: 'perfil', component: PerfilComponent, canActivate: [GuardService] },
+  { path: 'signovital', component: SignovitalComponent, children: [
+    { path: 'nuevo', component: SignovitalEdicionComponent },
+    { path: 'edicion/:id', component: SignovitalEdicionComponent }
+    ], canActivate: [GuardService]
+  },
   { path: 'medico', component: MedicoComponent, canActivate: [GuardService] },
   { path: 'consulta', component: ConsultaComponent, canActivate: [GuardService] },
   { path: 'consulta-wizard', component: WizardComponent, canActivate: [GuardService] },
@@ -57,7 +66,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { relativeLinkResolution: 'legacy' })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

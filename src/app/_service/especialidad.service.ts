@@ -16,7 +16,7 @@ export class EspecialidadService extends GenericService<Especialidad>{
   constructor(protected http: HttpClient) {
     super(
       http,
-      `${environment.HOST}/${environment.MICRO_CRUD}/especialidades`);
+      `${environment.HOST}/especialidades`);
   }
 
   //get Subjects

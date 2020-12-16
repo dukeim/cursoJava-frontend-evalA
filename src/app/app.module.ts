@@ -32,6 +32,9 @@ import { ServerErrorsInterceptor } from './shared/server-errors.interceptor';
 import { RecuperarComponent } from './pages/login/recuperar/recuperar.component';
 import { TokenComponent } from './pages/login/recuperar/token/token.component';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+import { PerfilComponent } from './pages/perfil/perfil.component';
+import { SignovitalComponent } from './pages/signovital/signovital.component';
+import { SignovitalEdicionComponent } from './pages/signovital/signovital-edicion/signovital-edicion.component';
 
 export function tokenGetter() {
   return sessionStorage.getItem(environment.TOKEN_NAME);
@@ -58,7 +61,10 @@ export function tokenGetter() {
     Not403Component,
     Not404Component,
     RecuperarComponent,
-    TokenComponent
+    TokenComponent,
+    PerfilComponent,
+    SignovitalComponent,
+    SignovitalEdicionComponent
   ],
   //entryComponents:[ MedicoDialogoComponent ],
   imports: [
@@ -75,7 +81,7 @@ export function tokenGetter() {
       config: {
         tokenGetter: tokenGetter,
         allowedDomains: [environment.HOST.substring(7)],
-        disallowedRoutes: [`http://${environment.HOST.substring(7)}/login/enviarCorreo`],
+        disallowedRoutes: [`http://${environment.HOST.substring(7)}/login/enviarCorreo`, `http://${environment.HOST.substring(7)}/login`],
       },
     }),
   ],
